@@ -17,21 +17,22 @@ class CategoryAdapter(context : Context,categories : List<Category> ): BaseAdapt
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val categoryView : View
-
-        categoryView = LayoutInflater.from(context).inflate(R.layout.category_list_item,null)
-
-        val categoryimv : ImageView = categoryView.findViewById(R.id.categoryimgv)
-        val categorytxt : TextView = categoryView.findViewById(R.id.categorytxt)
-
-        val category = categories[position]
-        val resourceId = context.resources.getIdentifier(category.image,"drawable",context.packageName)
-
-        categoryimv.setImageResource(resourceId)
-        categorytxt.text = category.title
 
 
-        return categoryView
+       val layoutinflate = LayoutInflater.from(context)
+        val rowlayout = layoutinflate.inflate(R.layout.category_list_item,parent , false)
+
+        val categorytxtv = rowlayout.findViewById<TextView>(R.id.categorytxtv)
+        val categoryimgv = rowlayout.findViewById<ImageView>(R.id.categoryimgv)
+
+
+        categorytxtv.text = categories.get(position).title
+
+        val resourceId = context.resources.getIdentifier(categories.get(position).image,"drawable",context.packageName)
+        categoryimgv.setImageResource(resourceId)
+
+
+        return rowlayout
     }
 
     override fun getItem(position: Int): Any {
@@ -41,7 +42,7 @@ class CategoryAdapter(context : Context,categories : List<Category> ): BaseAdapt
 
     override fun getItemId(position: Int): Long {
 
-    return 0
+    return position.toLong()
     }
 
     override fun getCount(): Int {
