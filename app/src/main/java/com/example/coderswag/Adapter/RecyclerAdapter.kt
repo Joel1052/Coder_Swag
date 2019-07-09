@@ -1,13 +1,18 @@
 package com.example.coderswag.Adapter
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.example.coderswag.Controller.ProductActivity
 import com.example.coderswag.Model.Category
 import com.example.coderswag.R
+import com.example.coderswag.Utilities.EXTRA_CAT
 import kotlinx.android.synthetic.main.category_list_item.view.*
 
 class RecyclerAdapter(val contecxt : Context,val categories : List<Category>): RecyclerView.Adapter<RecyclerAdapter.Holder>() {
@@ -43,6 +48,15 @@ class RecyclerAdapter(val contecxt : Context,val categories : List<Category>): R
             categoryTextView.text = "${category.title}"
             val resourceId =context.resources.getIdentifier(category.image,"drawable",context.packageName)
             catergoryImageView.setImageResource(resourceId)
+            itemView.setOnClickListener {
+
+               val categoryIntent = Intent(context,ProductActivity::class.java)
+                category.title
+                categoryIntent.putExtra(EXTRA_CAT,category.title)
+                context.startActivity(categoryIntent)
+
+               
+            }
 
         }
     }
