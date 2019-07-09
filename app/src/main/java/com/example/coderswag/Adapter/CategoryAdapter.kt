@@ -18,9 +18,17 @@ class CategoryAdapter(context : Context,categories : List<Category> ): BaseAdapt
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
+        val rowlayout : View
 
-       val layoutinflate = LayoutInflater.from(context)
-        val rowlayout = layoutinflate.inflate(R.layout.category_list_item,parent , false)
+        if(convertView == null){
+
+            val layoutinflate = LayoutInflater.from(context)
+             rowlayout = layoutinflate.inflate(R.layout.category_list_item,parent , false)
+        }else {
+            rowlayout = convertView
+        }
+
+
 
         val categorytxtv = rowlayout.findViewById<TextView>(R.id.categorytxtv)
         val categoryimgv = rowlayout.findViewById<ImageView>(R.id.categoryimgv)
