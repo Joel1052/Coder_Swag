@@ -1,12 +1,12 @@
 package com.example.coderswag.Controller
 
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ArrayAdapter
+import android.support.v7.widget.LinearLayoutManager
 import com.example.coderswag.Adapter.CategoryAdapter
+import com.example.coderswag.Adapter.RecyclerAdapter
 import com.example.coderswag.Model.Category
-import com.example.coderswag.Model.Product
 import com.example.coderswag.R
 import com.example.coderswag.Service.DataService
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,9 +19,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-         val adapter = CategoryAdapter(this,DataService.categories)
-
-         categorylistview.adapter = adapter
+        //ategoryRecyclelistview.setBackgroundColor(Color.BLUE)
+        categoryRecyclelistview.layoutManager = LinearLayoutManager(this)
+        categoryRecyclelistview.adapter = RecyclerAdapter(this , DataService.categories as List<Category>)
+        categoryRecyclelistview.setHasFixedSize(true)
 
     }
 }
