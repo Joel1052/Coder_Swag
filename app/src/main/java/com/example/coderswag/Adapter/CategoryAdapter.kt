@@ -24,20 +24,22 @@ class CategoryAdapter(context : Context,categories : List<Category> ): BaseAdapt
 
             val layoutinflate = LayoutInflater.from(context)
              rowlayout = layoutinflate.inflate(R.layout.category_list_item,parent , false)
+
+            val catergorytxtv = rowlayout.findViewById<TextView>(R.id.categorytxtv)
+            val categoryimgv = rowlayout.findViewById<ImageView>(R.id.categoryimgv)
+            val holder = viewholder(catergorytxtv,categoryimgv)
+            rowlayout.tag = holder
         }else {
             rowlayout = convertView
         }
 
 
 
-        val categorytxtv = rowlayout.findViewById<TextView>(R.id.categorytxtv)
-        val categoryimgv = rowlayout.findViewById<ImageView>(R.id.categoryimgv)
-
-
-        categorytxtv.text = categories.get(position).title
+        val holder = rowlayout.tag as viewholder
+        holder.nameTextView.text = categories.get(position).title
 
         val resourceId = context.resources.getIdentifier(categories.get(position).image,"drawable",context.packageName)
-        categoryimgv.setImageResource(resourceId)
+        holder.imageView.setImageResource(resourceId)
 
 
         return rowlayout
@@ -57,4 +59,6 @@ class CategoryAdapter(context : Context,categories : List<Category> ): BaseAdapt
 
     return categories.count()
     }
+
+    private class viewholder(val nameTextView : TextView , val imageView : ImageView)
 }
