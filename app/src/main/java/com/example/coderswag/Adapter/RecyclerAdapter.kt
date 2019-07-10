@@ -55,7 +55,7 @@ class RecyclerAdapter(val contecxt : Context,val categories : List<Category>): R
                 categoryIntent.putExtra(EXTRA_CAT,category.title)
                 context.startActivity(categoryIntent)
 
-               
+
             }
 
         }

@@ -14,7 +14,7 @@ import org.w3c.dom.Text
 class CategoryAdapter(val categories : List<Category>) : BaseAdapter(){
 
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View, parent: ViewGroup?): View {
 
         val categoryView : View
 

@@ -12,5 +12,5 @@
             tools:text="Category"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="32dp" android:layout_marginLeft="16dp"
-            android:id="@+id/producttxt" android:fontFamily="@font/arbutus" android:textSize="18sp"/>
+            android:id="@+id/producttxt" android:fontFamily="@font/racing_sans_one" android:textSize="30sp"/>
 </android.support.constraint.ConstraintLayout>
